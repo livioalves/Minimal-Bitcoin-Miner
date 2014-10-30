@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
+using System.Configuration;
 
 namespace MiniMiner
 {
@@ -250,7 +251,7 @@ namespace MiniMiner
             ClearConsole();
             Print("Chose a Mining Pool 'user:password@url:port' or leave empty to skip.");
             Console.Write("Select Pool: ");
-            string login = ReadLineDefault("lithander_2:foo@btcguild.com:8332");
+            string login = ReadLineDefault(System.Configuration.ConfigurationSettings.AppSettings["loginData"]);
             return new Pool(login);
         }
 
